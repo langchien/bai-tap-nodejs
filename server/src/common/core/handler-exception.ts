@@ -1,15 +1,19 @@
 import { logger } from '@/common/logger.service'
-import { AppException, UnprocessableEntityException } from '@/constants/exceptions'
+import {
+  AppException,
+  BadRequestException,
+  UnprocessableEntityException,
+} from '@/constants/exceptions'
 import { STATUS_CODE, STATUS_MESSAGE } from '@/constants/status-code'
 import { NextFunction, Request, Response } from 'express'
 
 export function handlerExceptionDefault() {
   return (err: any, req: Request, res: Response, next: NextFunction) => {
-    if (err instanceof UnprocessableEntityException)
+    if (err instanceof UnprocessableEntityException || err instanceof BadRequestException)
       return res.status(err.statusCode).json({
         statusCode: err.statusCode,
         message: err.message,
-        errors: err.errors,
+        errorInfor: err.errorInfor,
       })
     if (err instanceof AppException)
       return res.status(err.statusCode).json({

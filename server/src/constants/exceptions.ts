@@ -1,5 +1,15 @@
 import { STATUS_CODE, STATUS_MESSAGE } from './status-code'
 
+export interface IValidateErrorDetail {
+  message: string
+  path: PropertyKey[]
+}
+
+export interface IValidateErrorInfor {
+  location: 'params' | 'query' | 'body'
+  errors: IValidateErrorDetail[]
+}
+
 /**
  * @param message - Tin nhắn sẽ trả về cho client khi xảy ra lỗi.
  * @param statusCode - Mã trạng thái HTTP (mặc định là 500).
@@ -14,8 +24,10 @@ export class AppException extends Error {
 }
 
 export class BadRequestException extends AppException {
-  constructor(message: string = STATUS_MESSAGE.BAD_REQUEST) {
+  errorInfor?: IValidateErrorInfor
+  constructor(message: string = STATUS_MESSAGE.BAD_REQUEST, errorInfor?: IValidateErrorInfor) {
     super(message, STATUS_CODE.BAD_REQUEST)
+    this.errorInfor = errorInfor
   }
 }
 
@@ -60,15 +72,13 @@ export class InternalServerErrorException extends AppException {
   }
 }
 
-export interface ErrorDetail {
-  message: string
-  path: PropertyKey[]
-}
-
 export class UnprocessableEntityException extends AppException {
-  errors: ErrorDetail[]
-  constructor(errors: ErrorDetail[], message: string = STATUS_MESSAGE.UNPROCESSABLE_ENTITY) {
+  errorInfor: IValidateErrorInfor
+  constructor(
+    validateError: IValidateErrorDetail[],
+    message: string = STATUS_MESSAGE.UNPROCESSABLE_ENTITY,
+  ) {
     super(message, STATUS_CODE.UNPROCESSABLE_ENTITY)
-    this.errors = errors
+    this.errorInfor = { location: 'body', errors: validateError }
   }
 }
