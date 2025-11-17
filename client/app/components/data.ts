@@ -1,0 +1,68 @@
+import type { IUser } from './schema'
+
+export const FAKE_USERS: IUser[] = [
+  {
+    id: 1,
+    name: 'Nguyễn Văn A',
+    email: 'nguyenvana@email.com',
+    phone: '0912345678',
+    status: 'active',
+    createdAt: '2024-01-15',
+  },
+  {
+    id: 2,
+    name: 'Trần Thị B',
+    email: 'tranthib@email.com',
+    phone: '0923456789',
+    status: 'active',
+    createdAt: '2024-02-20',
+  },
+  {
+    id: 3,
+    name: 'Phạm Văn C',
+    email: 'phamvanc@email.com',
+    phone: '0934567890',
+    status: 'inactive',
+    createdAt: '2024-03-10',
+  },
+  {
+    id: 4,
+    name: 'Hoàng Thị D',
+    email: 'hoangthid@email.com',
+    phone: '0945678901',
+    status: 'active',
+    createdAt: '2024-04-05',
+  },
+  {
+    id: 5,
+    name: 'Lê Văn E',
+    email: 'levane@email.com',
+    phone: '0956789012',
+    status: 'active',
+    createdAt: '2024-05-12',
+  },
+  {
+    id: 6,
+    name: 'Đỗ Thị F',
+    email: 'dothif@email.com',
+    phone: '0967890123',
+    status: 'inactive',
+    createdAt: '2024-06-18',
+  },
+  {
+    id: 7,
+    name: 'Vũ Văn G',
+    email: 'vungu@email.com',
+    phone: '0971234567',
+    status: 'active',
+    createdAt: '2024-06-22',
+  },
+  {
+    id: 8,
+    name: 'Phan Thị H',
+    email: 'phanthih@email.com',
+    phone: '0981234568',
+    status: 'active',
+    createdAt: '2024-06-25',
+  },
+]
