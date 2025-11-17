@@ -1,4 +1,4 @@
-import databaseService from '@/common/database.service'
+import databaseService from '@/lib/database.service'
 import { ObjectId } from 'mongodb'
 import {
   IInputInsertUser,

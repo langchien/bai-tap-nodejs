@@ -1,10 +1,10 @@
-import { logger } from '@/common/logger.service'
 import {
   AppException,
   BadRequestException,
   UnprocessableEntityException,
 } from '@/constants/exceptions'
 import { STATUS_CODE, STATUS_MESSAGE } from '@/constants/status-code'
+import { logger } from '@/lib/logger.service'
 import { NextFunction, Request, Response } from 'express'
 
 export function handlerExceptionDefault() {

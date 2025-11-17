@@ -1,6 +1,6 @@
-import { hashingService } from '@/common/hashing.service'
 import { NotFoundException } from '@/constants/exceptions'
 import { STATUS_CODE } from '@/constants/status-code'
+import { hashingService } from '@/lib/hashing.service'
 import { RequestHandler } from 'express'
 import { userRepository } from './user.repository'
 import { ICreateUserReqBodyDto, IUpdateUserReqBodyDto, IUserIdReqParamsDto } from './user.req.dto'

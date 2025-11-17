@@ -29,3 +29,13 @@ export const PasswordSchema = z.string('Mật khẩu không được để trố
       'Mật khẩu phải có ít nhất 8 ký tự, bao gồm tối thiểu 1 ký tự đặc biệt, tối thiểu 1 số, 1 chữ viết hoa và 1 chữ viết thường',
   },
 )
+
+export const createStringSchema = (
+  fieldName: string,
+  minLength: number = 1,
+  maxLength: number = 1000,
+) =>
+  z
+    .string(`${fieldName} phải là một chuỗi ký tự`)
+    .min(minLength, `${fieldName} phải có ít nhất ${minLength} ký tự`)
+    .max(maxLength, `${fieldName} không được vượt quá ${maxLength} ký tự`)

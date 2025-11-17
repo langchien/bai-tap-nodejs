@@ -1,4 +1,4 @@
-import { zodValidate } from '@/common/core/validate.middleware'
+import { zodValidate } from '@/lib/core/validate.middleware'
 import { Router } from 'express'
 import { userController } from './user.controller'
 import {

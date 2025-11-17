@@ -1,10 +1,10 @@
-import { logger } from '@/common/logger.service'
 import { envConfig } from '@/config/env-config'
+import { handlerExceptionDefault } from '@/lib//core/handler-exception'
+import databaseService from '@/lib//database.service'
+import { logger } from '@/lib/logger.service'
 import cors from 'cors'
 import express from 'express'
 import { createServer } from 'http'
-import { handlerExceptionDefault } from './common/core/handler-exception'
-import databaseService from './common/database.service'
 import { userRoute } from './routes/users/user.route'
 
 const main = async () => {
