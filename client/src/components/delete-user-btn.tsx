@@ -1,3 +1,4 @@
+import { userRequest } from '@/api-request/user/user.request'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,18 +11,22 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
+import { useRequest } from '@/hooks/use-request'
 import { Trash2 } from 'lucide-react'
-import { useCrudUser } from '../hooks/use-crud-user'
+import { useNavigate } from 'react-router'
 
-export function DeleteUserBtn({ userId }: { userId: number }) {
-  const { deleteUser } = useCrudUser()
+export function DeleteUserBtn({ userId }: { userId: string }) {
+  const navigate = useNavigate()
+  const onDelete = useRequest(() => userRequest.deleteById(userId), {
+    messageSuccess: 'Xoá người dùng thành công',
+    onSuccess: () => navigate('/'),
+  })
 
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant='destructive' size='sm' className='hover:cursor-pointer'>
-          <Trash2 className='w-4 h-4' />
-          Xóa
+        <Button variant='ghost' size='icon-lg'>
+          <Trash2 className='w-4 h-4 text-red-500' />
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -34,11 +39,7 @@ export function DeleteUserBtn({ userId }: { userId: number }) {
         <AlertDialogFooter>
           <AlertDialogCancel>Hủy</AlertDialogCancel>
           <AlertDialogAction asChild>
-            <Button
-              size='sm'
-              onClick={() => deleteUser(userId)}
-              className='bg-red-500 hover:bg-red-600 focus:bg-red-600'
-            >
+            <Button onClick={onDelete} className='bg-red-500 hover:bg-red-600 focus:bg-red-600'>
               <Trash2 className='w-4 h-4' />
               Xóa
             </Button>

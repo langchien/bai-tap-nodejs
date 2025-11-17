@@ -1,6 +1,6 @@
 import { UserSchema } from './user.schema'
 
-export const UserResDtoSchema = UserSchema.omit({
+export const UserResSchema = UserSchema.omit({
   hashedPassword: true,
 })
-export interface IUserResDto extends ReturnType<typeof UserResDtoSchema.parse> {}
+export interface IUserResDto extends ReturnType<typeof UserResSchema.parse> {}

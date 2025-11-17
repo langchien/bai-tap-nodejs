@@ -30,6 +30,7 @@ export class DatabaseService {
       await this.client.connect()
       this._db = this.client.db(envConfig.mongodb.dbName)
       await this._db.command({ ping: 1 })
+      await this.indexedDB()
       logger.success('Kết nối đến MongoDB thành công.')
     } catch (error) {
       logger.error('Lỗi kết nối đến MongoDB:', error)
@@ -51,6 +52,30 @@ export class DatabaseService {
       await this.client.close()
       this._db = null
       logger.info('MongoDB connection closed.')
+    }
+  }
+
+  get users() {
+    return this.db.collection('users')
+  }
+
+  private async indexedDB() {
+    const userIndexes = await this.users.indexes()
+    // index text cho tìm kiếm nhanhh
+    const USER_INDEX_TEXT = 'displayName_text_email_text_username_text'
+    const textIndex = userIndexes.find((index) => index.name === USER_INDEX_TEXT)
+    if (!textIndex) {
+      await this.users.createIndex(
+        {
+          displayName: 'text',
+          email: 'text',
+          username: 'text',
+        },
+        {
+          name: USER_INDEX_TEXT,
+        },
+      )
+      logger.info(`Đã tạo text index "${USER_INDEX_TEXT}" cho collection users.`)
     }
   }
 }

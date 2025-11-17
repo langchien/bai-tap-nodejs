@@ -1,12 +1,12 @@
 import { createObjectIdSchema, createStringSchema } from '@/lib/schema.common'
 import z from 'zod'
 
-enum UserStatus {
+enum USER_STATUS {
   ACTIVE = 'active',
   INACTIVE = 'inactive',
 }
 
-export const UserStatusSchema = z.enum(UserStatus, {
+export const USER_STATUSSchema = z.enum(USER_STATUS, {
   error: 'Trạng thái người dùng phải là active hoặc inactive',
 })
 
@@ -16,8 +16,8 @@ export const UserSchema = z.object({
   hashedPassword: z.string(),
   displayName: createStringSchema('Tên hiển thị', 1, 100),
   email: z.email('Email không hợp lệ'),
-  phone: createStringSchema('Số điện thoại', 10, 15).optional(),
-  status: UserStatusSchema,
+  phoneNumber: createStringSchema('Số điện thoại', 10, 15).optional(),
+  status: USER_STATUSSchema,
   createdAt: z.coerce.date().default(() => new Date()),
   updatedAt: z.coerce.date().default(() => new Date()),
 })

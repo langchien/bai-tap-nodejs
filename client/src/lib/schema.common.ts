@@ -17,7 +17,7 @@ export const createObjectIdSchema = (fieldName: string = '_id') =>
       return z.NEVER
     }
     // return new ObjectId(val) // Clone từ backend sang và client chỉ cần dùng string thôi
-    return new String(val)
+    return val as string
   })
 
 export const PasswordSchema = z.string('Mật khẩu không được để trống').refine(

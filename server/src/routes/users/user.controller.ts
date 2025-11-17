@@ -3,20 +3,28 @@ import { STATUS_CODE } from '@/constants/status-code'
 import { hashingService } from '@/lib/hashing.service'
 import { RequestHandler } from 'express'
 import { userRepository } from './user.repository'
-import { ICreateUserReqBodyDto, IUpdateUserReqBodyDto, IUserIdReqParamsDto } from './user.req.dto'
-import { IUserResDto, UserResDtoSchema } from './user.res.dto'
+import {
+  ICreateUserReqBodyDto,
+  IUpdateUserReqBodyDto,
+  IUserIdReqParamsDto,
+  IUserSearchReqQueryDto,
+} from './user.req.dto'
+import { IUserResDto, UserResSchema } from './user.res.dto'
 
 class UserController {
   findOne: RequestHandler<IUserIdReqParamsDto, IUserResDto> = async (req, res) => {
     const { userId } = req.params
     const user = await userRepository.findOneById(userId)
     if (!user) throw new NotFoundException()
-    res.json(UserResDtoSchema.parse(user))
+    res.json(UserResSchema.parse(user))
   }
 
-  findAll: RequestHandler<any, IUserResDto[]> = async (req, res) => {
-    const users = await userRepository.findAll()
-    res.json(users.map((user) => UserResDtoSchema.parse(user)))
+  findAll: RequestHandler<any, IUserResDto[], any, IUserSearchReqQueryDto> = async (req, res) => {
+    const { q } = req.query
+    let results: IUserResDto[] = []
+    if (q) results = await userRepository.searchByText(q)
+    else results = await userRepository.findAll()
+    res.json(results.map((user) => UserResSchema.parse(user)))
   }
 
   delete: RequestHandler = async (req, res) => {
@@ -33,7 +41,7 @@ class UserController {
       hashedPassword,
       ...rest,
     })
-    res.status(STATUS_CODE.CREATED).json(UserResDtoSchema.parse(newUser))
+    res.status(STATUS_CODE.CREATED).json(UserResSchema.parse(newUser))
   }
 
   update: RequestHandler<IUserIdReqParamsDto, IUserResDto, IUpdateUserReqBodyDto> = async (
@@ -43,7 +51,7 @@ class UserController {
     const { userId } = req.params
     const updatedUser = await userRepository.update(userId, req.body)
     if (!updatedUser) throw new NotFoundException()
-    res.json(UserResDtoSchema.parse(updatedUser))
+    res.json(UserResSchema.parse(updatedUser))
   }
 }
 

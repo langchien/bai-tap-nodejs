@@ -1,0 +1,223 @@
+[
+  {
+    "_id": {
+      "$oid": "691b31ae7af9f50454b559c1"
+    },
+    "username": "nguyenvanan",
+    "hashedPassword": "$2b$10$Wd5XxnN/r5vCAkS1cbTARuldEJD6t0qR5yDtew3Az/25dwS/rUNo.",
+    "displayName": "Nguyễn Văn An",
+    "email": "nguyenvanan@example.com",
+    "phoneNumber": "1234567890",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:31:10.091Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:31:10.091Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b31c47af9f50454b559c2"
+    },
+    "username": "tranthibinh",
+    "hashedPassword": "$2b$10$y6Jr24RU8I0k4C/eAR4mve5X7tNy103KYejnuMKSfWmh/MonR6WAq",
+    "displayName": "Trần Thị Bình",
+    "email": "tranthibinh@example.com",
+    "phoneNumber": "1234567891",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:31:32.933Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:31:32.933Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b31cc7af9f50454b559c3"
+    },
+    "username": "levancuong",
+    "hashedPassword": "$2b$10$M1vN/HPQkW.0tP5iEGgokOYJfQOH7l/Ah7qs6pCavMaThQmjOmSbC",
+    "displayName": "Lê Văn Cường",
+    "email": "levancuong@example.com",
+    "phoneNumber": "1234567892",
+    "status": "inactive",
+    "createdAt": {
+      "$date": "2025-11-17T14:31:40.179Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:31:40.179Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b31d27af9f50454b559c4"
+    },
+    "username": "phamthidung",
+    "hashedPassword": "$2b$10$uYFRqAI69UKygElk6kRKNu4tPS2GjRKo9e.Q2bPb5MoHZNB8/gHdq",
+    "displayName": "Phạm Thị Dung",
+    "email": "phamthidung@example.com",
+    "phoneNumber": "1234567893",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:31:46.980Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:31:46.980Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b31da7af9f50454b559c5"
+    },
+    "username": "hoangvanem",
+    "hashedPassword": "$2b$10$SZs6JgtOSTlDqMK.TrNJhO.VgoK6WMGgeCZjTSIuCfprBOouJ4sVy",
+    "displayName": "Hoàng Văn Em",
+    "email": "hoangvanem@example.com",
+    "phoneNumber": "1234567894",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:31:54.582Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:31:54.582Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b31e27af9f50454b559c6"
+    },
+    "username": "phanthigiang",
+    "hashedPassword": "$2b$10$0w1PGqsq6dTd3pdz.16NruSIEy8CE9Oh7oTZKRaPC3bmaWdZHHHzi",
+    "displayName": "Phan Thị Giang",
+    "email": "phanthigiang@example.com",
+    "phoneNumber": "1234567895",
+    "status": "inactive",
+    "createdAt": {
+      "$date": "2025-11-17T14:32:02.713Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:32:02.713Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b31f17af9f50454b559c7"
+    },
+    "username": "vuvanhung",
+    "hashedPassword": "$2b$10$mRNiA6S4/nvfxr5a0em/OO8CBcFxNpO.TCAhYb8Y3MVgF64zvZ7b.",
+    "displayName": "Vũ Văn Hùng",
+    "email": "vuvanhung@example.com",
+    "phoneNumber": "1234567896",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:32:17.746Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:32:17.746Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b31fa7af9f50454b559c8"
+    },
+    "username": "dangthihuong",
+    "hashedPassword": "$2b$10$ppI5tvEKlPbDGX9OMVOVsO6bZ3kY54En4Mg7R0X2eoEZi07PVzl9S",
+    "displayName": "Đặng Thị Hương",
+    "email": "dangthihuong@example.com",
+    "phoneNumber": "1234567897",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:32:26.558Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:32:26.558Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b32037af9f50454b559c9"
+    },
+    "username": "buivanich",
+    "hashedPassword": "$2b$10$xXA.BYZlGNhGtsvevJCAIuB6jvGd6j6EnkWnw3nH0R.YURmodx/k.",
+    "displayName": "Bùi Văn Ích",
+    "email": "buivanich@example.com",
+    "phoneNumber": "1234567898",
+    "status": "inactive",
+    "createdAt": {
+      "$date": "2025-11-17T14:32:35.173Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:32:35.173Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b320b7af9f50454b559ca"
+    },
+    "username": "dothikieu",
+    "hashedPassword": "$2b$10$HC9TuvyYpPcT8swVMFZESOcvCJMFXZ6X.QC/zDycDhBH.APwhfUqm",
+    "displayName": "Đỗ Thị Kiều",
+    "email": "dothikieu@example.com",
+    "phoneNumber": "1234567899",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:32:43.254Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:32:43.254Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b32157af9f50454b559cb"
+    },
+    "username": "hovanglong",
+    "hashedPassword": "$2b$10$sL8G0yklmR2HFy3rsUNUq.GKd7UgsInmGWWKFeFDInUiYqOky8to2",
+    "displayName": "Hồ Văn Long",
+    "email": "hovanglong@example.com",
+    "phoneNumber": "1234567800",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:32:53.057Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:32:53.057Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b321d7af9f50454b559cc"
+    },
+    "username": "ngothimai",
+    "hashedPassword": "$2b$10$g9QPtE5bDcA5x6vk5PpLQ.S6DQHHuWKncvkLMNNhJp/NkHxRqerti",
+    "displayName": "Ngô Thị Mai",
+    "email": "ngothimai@example.com",
+    "phoneNumber": "1234567801",
+    "status": "inactive",
+    "createdAt": {
+      "$date": "2025-11-17T14:33:01.073Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:33:01.073Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "691b32237af9f50454b559cd"
+    },
+    "username": "duongvannam",
+    "hashedPassword": "$2b$10$do3YohbdRBbOphXpqi46O.xfvGOPQpWZP9iG/IdQrt349h/Ta7vHG",
+    "displayName": "Dương Văn Nam",
+    "email": "duongvannam@example.com",
+    "phoneNumber": "1234567802",
+    "status": "active",
+    "createdAt": {
+      "$date": "2025-11-17T14:33:07.625Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-17T14:33:07.625Z"
+    }
+  }
+]

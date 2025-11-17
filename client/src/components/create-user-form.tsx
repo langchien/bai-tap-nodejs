@@ -1,3 +1,9 @@
+import {
+  CreateUserReqBodySchema,
+  type ICreateUserReqBodyDto,
+} from '@/api-request/user/user.req.dto'
+import { userRequest } from '@/api-request/user/user.request'
+import { USER_STATUS } from '@/api-request/user/user.schema'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -9,32 +15,31 @@ import {
 } from '@/components/ui/dialog'
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { useCrudUser } from '@/hooks/use-crud-user'
+import { useRequest } from '@/hooks/use-request'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus, UserIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { toast } from 'sonner'
-import { AddUserSchema, type IAddUser } from './schema'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 
-export default function AddUserForm() {
-  const { addUser, users } = useCrudUser()
+export default function CreateUserForm() {
   const [open, setOpen] = useState(false)
-  const form = useForm<IAddUser>({
-    resolver: zodResolver(AddUserSchema),
+  const form = useForm<ICreateUserReqBodyDto>({
+    resolver: zodResolver(CreateUserReqBodySchema),
     defaultValues: {
-      status: 'active',
-      createdAt: new Date().toISOString().split('T')[0],
+      status: USER_STATUS.ACTIVE,
     },
   })
-  function onSubmit(data: IAddUser) {
-    const randomId = users.length + 1
-    addUser({ ...data, id: randomId })
-    toast.success('Thêm người dùng thành công')
-    setOpen(false)
-    form.reset({}, { keepDefaultValues: true })
-  }
+  const onRequest = useRequest(userRequest.create, {
+    setError: form.setError,
+    messageSuccess: 'Tạo người dùng thành công',
+    onSuccess: () => {
+      setOpen(false)
+      form.reset({}, { keepDefaultValues: true })
+    },
+    redirectUrl: '/',
+  })
+  const onSubmit = form.handleSubmit(onRequest)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -52,19 +57,19 @@ export default function AddUserForm() {
           </DialogTitle>
           <DialogDescription>Điền thông tin để tạo người dùng mới</DialogDescription>
         </DialogHeader>
-        <form id='form-rhf-demo' onSubmit={form.handleSubmit(onSubmit)}>
+        <form id='form-rhf-demo' onSubmit={onSubmit}>
           <FieldGroup>
             <Controller
-              name='name'
+              name='username'
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor='name'>Tên</FieldLabel>
+                  <FieldLabel htmlFor='username'>Tên đăng nhập</FieldLabel>
                   <Input
                     {...field}
-                    id='name'
+                    id='username'
                     aria-invalid={fieldState.invalid}
-                    placeholder='Nhập tên người dùng'
+                    placeholder='Nhập tên đăng nhập'
                   />
                   {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
@@ -88,16 +93,50 @@ export default function AddUserForm() {
               )}
             />
             <Controller
-              name='phone'
+              name='displayName'
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor='phone'>Số Điện Thoại</FieldLabel>
+                  <FieldLabel htmlFor='displayName'>Tên hiển thị</FieldLabel>
                   <Input
                     {...field}
-                    id='phone'
+                    id='displayName'
+                    aria-invalid={fieldState.invalid}
+                    placeholder='Nhập tên hiển thị'
+                  />
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                </Field>
+              )}
+            />
+
+            <Controller
+              name='phoneNumber'
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor='phoneNumber'>Số Điện Thoại (tùy chọn)</FieldLabel>
+                  <Input
+                    {...field}
+                    id='phoneNumber'
                     aria-invalid={fieldState.invalid}
                     placeholder='Nhập số điện thoại'
+                  />
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                </Field>
+              )}
+            />
+            <Controller
+              name='password'
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor='password'>Mật khẩu</FieldLabel>
+                  <Input
+                    {...field}
+                    type='password'
+                    id='password'
+                    aria-invalid={fieldState.invalid}
+                    placeholder='Nhập mật khẩu'
                   />
                   {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>

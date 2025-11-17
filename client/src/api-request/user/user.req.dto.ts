@@ -3,7 +3,7 @@ import z from 'zod'
 import { UserCollection } from './user.schema'
 
 // reqest body dto
-export const CreateUserReqBodyDtoSchema = UserCollection.omit({
+export const CreateUserReqBodySchema = UserCollection.omit({
   hashedPassword: true,
   createdAt: true,
   updatedAt: true,
@@ -11,17 +11,21 @@ export const CreateUserReqBodyDtoSchema = UserCollection.omit({
   password: PasswordSchema,
 })
 
-export interface ICreateUserReqBodyDto extends z.infer<typeof CreateUserReqBodyDtoSchema> {}
-
-export const UpdateUserReqBodyDtoSchema = CreateUserReqBodyDtoSchema.omit({
+export const UpdateUserReqBodySchema = CreateUserReqBodySchema.omit({
   password: true,
 }).partial()
-
-export interface IUpdateUserReqBodyDto extends z.infer<typeof UpdateUserReqBodyDtoSchema> {}
 
 // request params dto
 export const UserIdReqParamsDtoSchema = z.object({
   userId: createStringIdSchema('userId'),
 })
 
+// request query dto
+export const UserSearchReqQueryDtoSchema = z.object({
+  q: z.string().min(1).optional(),
+})
+
+export interface ICreateUserReqBodyDto extends z.infer<typeof CreateUserReqBodySchema> {}
+export interface IUpdateUserReqBodyDto extends z.infer<typeof UpdateUserReqBodySchema> {}
 export interface IUserIdReqParamsDto extends z.infer<typeof UserIdReqParamsDtoSchema> {}
+export interface IUserSearchReqQueryDto extends z.infer<typeof UserSearchReqQueryDtoSchema> {}

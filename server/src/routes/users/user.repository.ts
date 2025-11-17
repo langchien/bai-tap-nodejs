@@ -9,11 +9,9 @@ import {
   UserSchema,
 } from './user.schema'
 
-const USER_COLLECTION = 'users'
-
 class UserRepository {
-  private get collection() {
-    return databaseService.db.collection(USER_COLLECTION)
+  get collection() {
+    return databaseService.users
   }
 
   async create(data: IInputInsertUser): Promise<IUser> {
@@ -56,7 +54,7 @@ class UserRepository {
   }
 
   async findAll(): Promise<IUser[]> {
-    const results = await this.collection.find().toArray()
+    const results = await this.collection.find().sort({ createdAt: -1 }).toArray()
     return results.map((result) =>
       UserSchema.parse({
         id: result._id,
@@ -68,6 +66,19 @@ class UserRepository {
   async delete(id: string): Promise<boolean> {
     const result = await this.collection.deleteOne({ _id: new ObjectId(id) })
     return result.deletedCount === 1
+  }
+
+  async searchByText(query: string): Promise<IUser[]> {
+    const results = await this.collection
+      .find({ $text: { $search: query } })
+      .sort({ createdAt: -1 })
+      .toArray()
+    return results.map((result) =>
+      UserSchema.parse({
+        id: result._id,
+        ...result,
+      }),
+    )
   }
 }
 
