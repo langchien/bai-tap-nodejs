@@ -23,7 +23,7 @@ export function handlerExceptionDefault() {
     logger.error('Đã xảy ra lỗi không mong muốn:', err)
     res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({
       statusCode: STATUS_CODE.INTERNAL_SERVER_ERROR,
-      message: STATUS_MESSAGE.INTERNAL_SERVER_ERROR,
+      message: STATUS_MESSAGE[STATUS_CODE.INTERNAL_SERVER_ERROR],
     })
   }
 }

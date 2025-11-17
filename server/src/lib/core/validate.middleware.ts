@@ -22,7 +22,7 @@ export const zodValidate: (
       }))
       if (typeValidation === 'body') throw new UnprocessableEntityException(errors)
       else {
-        throw new BadRequestException('Dữ liệu đầu vào không hợp lệ', {
+        throw new BadRequestException({
           location: typeValidation,
           errors: errors,
         })

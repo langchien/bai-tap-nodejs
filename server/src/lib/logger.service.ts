@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 
-export class Logger {
+class Logger {
   private wrapperFunction(message: string, colorFn: (msg: string) => string, options?: any) {
     const timestamp = new Date().toISOString()
     console.log(colorFn(`[${timestamp}] ${message}`))
