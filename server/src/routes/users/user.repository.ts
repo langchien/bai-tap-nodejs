@@ -54,7 +54,7 @@ class UserRepository {
   }
 
   async findAll(): Promise<IUser[]> {
-    const results = await this.collection.find().sort({ createdAt: -1 }).toArray()
+    const results = await this.collection.find().sort({ _id: -1 }).toArray()
     return results.map((result) =>
       UserSchema.parse({
         id: result._id,
@@ -71,7 +71,7 @@ class UserRepository {
   async searchByText(query: string): Promise<IUser[]> {
     const results = await this.collection
       .find({ $text: { $search: query } })
-      .sort({ createdAt: -1 })
+      .sort({ _id: -1 })
       .toArray()
     return results.map((result) =>
       UserSchema.parse({
