@@ -28,7 +28,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-        <Toaster duration={2000} position='top-center' />
+        <Toaster duration={2000} position='top-center' richColors />
         <ScrollRestoration />
         <Scripts />
       </body>
